@@ -1,6 +1,7 @@
 const main = (args) => {
   const input = args.trim().split("\r\n");
-  console.log(input);
+  const sweetsNum = Number(input[0]);
+  console.log(sweetsNum - 1);
 };
 
 // 提出時は以下を実行
