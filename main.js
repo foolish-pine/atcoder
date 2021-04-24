@@ -1,5 +1,5 @@
 const main = (args) => {
-  const input = args.trim().split("\r\n");
+  const input = args.trim().split("\n");
   console.log(input);
 };
 
