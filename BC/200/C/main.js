@@ -1,10 +1,19 @@
 const main = (args) => {
   const input = args.trim().split("\n");
-  let n = 1;
-  for (let i = 1; i < 200000; i++) {
-    n += i;
+  const N = Number(input[0]);
+  const A = input[1].split(" ").map((number) => Number(number));
+
+  const B = {};
+  for (let i = 0; i < A.length; i++) {
+    const k = A[i] % 200;
+    B[k] = B[k] ? ++B[k] : 1;
   }
-  console.log(n);
+
+  let result = 0;
+  for (let i = 0; i < Object.keys(B).length; i++) {
+    result += (B[Object.keys(B)[i]] * (B[Object.keys(B)[i]] - 1)) / 2;
+  }
+  console.log(result);
 };
 
 // 提出時は以下を実行
