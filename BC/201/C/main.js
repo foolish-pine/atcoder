@@ -1,39 +1,32 @@
 const main = (args) => {
   const input = args.trim().split("\n");
   const S = input[0];
+  const essentialNumberNum = S.split("").filter((s) => s === "o").length;
 
-  const o = S.split("").filter((s) => s === "o").length;
-  const x = S.split("").filter((s) => s === "x").length;
-  const q = S.split("").filter((s) => s === "?").length;
-
-  if (o > 4 || x === 10) {
+  if (essentialNumberNum > 4) {
     console.log(0);
     return;
   }
 
-  let result = 0;
-  if (o === 0) {
-    result += Math.pow(q, 4);
+  let count = 0;
+  for (let i = 0; i < 10000; i++) {
+    const essentialNumberSet = new Set();
+    const n = String(i).padStart(4, "0");
+
+    for (let j = 0; j < 4; j++) {
+      const digit = n[j];
+
+      if (S[Number(digit)] === "o") {
+        essentialNumberSet.add(Number(digit));
+      } else if (S[Number(digit)] === "x") {
+        break;
+      }
+      if (j === 3 && essentialNumberNum === essentialNumberSet.size) {
+        count++;
+      }
+    }
   }
-  if (o === 1) {
-    result += 1;
-    result += 4 * q;
-    result += 6 * Math.pow(q, 2);
-    result += 4 * Math.pow(q, 3);
-  }
-  if (o === 2) {
-    result += 8;
-    result += 2 * 6 * 2 * q;
-    result += 2 * 6 * Math.pow(q, 2);
-  }
-  if (o === 3) {
-    result += 6 * 4 * q;
-    result += 6 * 2 * 3;
-  }
-  if (o === 4) {
-    result += 24;
-  }
-  console.log(result);
+  console.log(count);
 };
 
 // 提出時は以下を実行
