@@ -4,17 +4,22 @@ const main = (args) => {
   const digitNum = N.length;
 
   let count = 0;
-  if (digitNum < 6) {
+  if (digitNum > 6) {
     count += (Math.pow(10, 6) - 1 - Math.pow(10, 3)) * 1;
   }
-
-  for (
-    let i = Math.pow(10, Math.floor(digitNum / 3) * 3);
-    i <= Number(N);
-    i++
-  ) {
-    count += Math.floor(digitNum / 3);
+  if (digitNum > 9) {
+    count += (Math.pow(10, 9) - 1 - Math.pow(10, 6)) * 2;
   }
+  if (digitNum > 12) {
+    count += (Math.pow(10, 12) - 1 - Math.pow(10, 9)) * 3;
+  }
+
+  if (digitNum === 15) {
+    count += 5;
+  }
+
+  count += Number(N) - Math.pow(10, (Math.ceil(digitNum / 3) - 1) * 3) + 1;
+
   console.log(count);
 };
 
