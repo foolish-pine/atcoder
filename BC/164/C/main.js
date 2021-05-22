@@ -1,6 +1,12 @@
 const main = (args) => {
   const input = args.trim().split("\n");
-  console.log(input);
+  const N = Number(input[0]);
+
+  const set = new Set();
+  for (let i = 1; i <= N; i++) {
+    set.add(input[i]);
+  }
+  console.log(set.size);
 };
 
 // 提出時は以下を実行
