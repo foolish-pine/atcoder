@@ -8,8 +8,4 @@ const main = (args) => {
   console.log(count);
 };
 
-// 提出時は以下を実行
-// main(require("fs").readFileSync("/dev/stdin", "utf8"));
-
-// ローカルテスト時は以下を実行
-main(require("fs").readFileSync("test.txt", "utf8"));
+main(require("fs").readFileSync("/dev/stdin", "utf8"));
