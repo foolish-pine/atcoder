@@ -3,18 +3,24 @@ const main = (args) => {
   const [n, k] = input[0].split(" ").map((n) => Number(n));
   const cn = input[1].split(" ");
 
-  const arr = [];
+  const map = new Map();
   for (let i = 0; i < k; i++) {
-    arr.push(cn[i]);
+    if (map.has(cn[i])) {
+      map.set(cn[i], map.get(cn[i]) + 1);
+    } else {
+      map.set(cn[i], 1);
+    }
   }
-  let max = new Set(arr).size;
+  let max = map.size;
   for (let i = k; i < n; i++) {
-    let _max = max;
-    if (arr.indexOf(arr[0]) === arr.lastIndexOf(arr[0])) _max--;
-    arr.shift();
-    arr.push(cn[i]);
-    if (arr.indexOf(arr[k - 1]) === arr.lastIndexOf(arr[k - 1])) _max++;
-    max = Math.max(max, _max);
+    map.set(cn[i - k], map.get(cn[i - k]) - 1);
+    if (map.get(cn[i - k]) === 0) map.delete(cn[i - k]);
+    if (map.has(cn[i])) {
+      map.set(cn[i], map.get(cn[i]) + 1);
+    } else {
+      map.set(cn[i], 1);
+    }
+    max = Math.max(max, map.size);
   }
   console.log(max);
 };
