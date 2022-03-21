@@ -1,2 +1,3 @@
-N = map(int, input.split())
-print(N)
+x, y = map(int, input().split())
+
+print(x if x > y else y)
