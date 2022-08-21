@@ -34,8 +34,8 @@
       "url": "https://atcoder.jp/contests/abc106/tasks/abc106_c",
       "directory": {
         "path": "c",
-        "testdir": "tests",
-        "submit": "main.js"
+        "testdir": "test",
+        "submit": "main.py"
       }
     },
     {
