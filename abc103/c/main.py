@@ -2,7 +2,14 @@
 
 
 def main():
-    pass
+    n = int(input())
+    an = map(int, input().split())
+
+    ans = 0
+    for a in an:
+        ans += a - 1
+
+    print(ans)
 
 
 main()
